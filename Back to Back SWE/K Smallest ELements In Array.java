@@ -6,7 +6,7 @@ class Solution {
     	 List<Integer> lista = new ArrayList<>();
      
      	for(int i=0;i<k; i++){
-       	            lista.add(elements[i]);
+       	     lista.add(elements[i]);
      	}
      	return lista;
 	*/
@@ -17,13 +17,13 @@ class Solution {
  	PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k, Collections.reverseOrder());
   
   	for(Integer element:elements){
-    	         maxHeap.add(element);  
+    	     maxHeap.add(element);  
   
-    	        if(maxHeap.size()==k+1)
-      	                maxHeap.poll();   
-                  }
+    	     if(maxHeap.size()==k+1)
+      	           maxHeap.poll();   
+        }
   
-                  List<Integer> smallest = new ArrayList<>(maxHeap);
-                  return smallest;                
+        List<Integer> smallest = new ArrayList<>(maxHeap);
+        return smallest;                
     }
 }
