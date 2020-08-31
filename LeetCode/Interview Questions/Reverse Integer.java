@@ -1,23 +1,21 @@
 class Solution {
-    public int singleNumber(int[] number) {
+    public int reverse(int x) {
+     
+        //Mathematical Solution
+        boolean signo = (x>=0)?true:false;
+        x = (!signo)?x*-1:x;
         
-        /*Using a HashSet
-        Set<Integer> set =  new HashSet();
-        for(int n:number){
-            if(!set.contains(n))
-                set.add(n);
-            else
-                set.remove(n);
+        long res = 0;
+        while(x%10>0 || x>0){
+            res *= 10;
+            res += (x%10); 
+            x /=10;
         }
-
-        Integer n = set.iterator.next();
-        return n;*/
         
-        //Bit Manipulation
-        int res=0;
-        for(int i : number)
-            res = res^i;
-         return res;
+        if(res>Integer.MAX_VALUE)
+            return 0;
         
-        }
+        res = (!signo)?res*-1:res;
+        return (int)res;
+    }
 }
