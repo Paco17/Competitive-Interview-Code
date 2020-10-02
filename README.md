@@ -1,7 +1,7 @@
 # Interview Questions
 
 ## Objective :fire:
-Be better than yesterday and get an Intern  :smiley:
+Be better than yesterday to get an Intern  :smiley:
 
 ## Language
   - Java
