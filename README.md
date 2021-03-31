@@ -3,5 +3,7 @@
 ## Objective :fire:
 Be better than yesterday to get an Intern  :smiley:
 
-## Language
+## Languages
   - Java
+  - C++ 
+  - JS 
