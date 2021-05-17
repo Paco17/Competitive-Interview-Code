@@ -10,94 +10,54 @@ class Solution{
             if(matrix.size()== 0 || matrix[0].size()==0){
                 return;
             }
-           int m = matrix.size(),
-               n = matrix[0].size();
+           //Constant space
 
-            bool firstRow = false, 
-                firstColumn = false;
-            
-            for(int j= 0; j<n; ++j){
-                if(matrix[0][j] == 0){
-                    firstRow =true;
-                    break;
-                }
-            }
-            
+           const int H = matrix.size();
+           const int W = matrix[0].size();
 
-            for(int i= 0; i<m; ++i){
-                if(matrix[i][0] == 0){
-                    firstColumn =true;
-                    break;
-                }
-            }
-            
-            for(int i=1;i<m;++i){
-                for(int j = 1;j<n;++j){
-                    if(matrix[i][j]==0){
-                        matrix[0][j] = 0;
-                        matrix[i][0] = 0;
-                    }
-                }
-            }
-                
-            
+           //vector<bool> row_zero(H);
+           //vector<bool> column_zero(W);
 
-            for(int i=1; i<m; ++i){
-                for(int j=1;j<n;++j){
-                    if(matrix[i][0] == 0 || matrix[0][j] == 0){
-                        matrix[i][j] =0;
-                    }
-                }
-            }
-                
-            
+            bool first_row_zero = false;
 
-             if(firstRow){
-                for(int j=0;j<n;++j){
-                    matrix [0][j] =0;
-                }
-             } 
 
-            if(firstColumn){
-                for(int i=0;i<m;++i){
-                    matrix [i][0] =0;
+           for(int col=0;col<W;++col){
+                if(matrix[0][col] == 0){
+                       //row_zero[row] = true;
+                       //column_zero[col] = true;
+                       first_row_zero = true;
                 }
             }
 
-            /* Another better solution
-                int m=A.size(), n=A[0].size();
-                bool r1=false;
-                for(int j=0;j<n;j++)
-                    if(A[0][j]==0) {
-                        r1=true;break;
-                    }
-                for(int i=1;i<m;++i) {
-                    bool flag=false;
-                    for(int j=0;j<n;++j) {
-                        if(A[i][j]==0) {
-                            A[0][j]=0;
-                            flag=true;
-                        }
-                    }
+           for(int row=0; row <H;++row){
+               for(int col = 0;col<W;++col){
+                   if(matrix[row][col] == 0){
+                       matrix[0][col] = 0;  //Primera fila en su columna
+                   }
+               }
+           }
 
-                    if(flag) {
-                        A.insert(A.begin()+i, vector<int>(n,0));
-                        A.erase(A.begin()+i+1);
+           for(int row=1;row<H;++row){
+               bool contains_zero = false;
+               for(int col= 0; col<W;++col){
+                   if(matrix[row][col] == 0){
+                       contains_zero = true;
+                       break;
+                   }
+               }
+                for(int col=0;col<W;++col){
+                    cout<<"col: "<<col<<endl;
+                    if(contains_zero || matrix[0][col]==0){
+                        matrix[row][col] = 0; //Pone en cero a la fila y columna
                     }
                 }
+           }
 
-                for(int j=0;j<n;j++) {
-                    if(A[0][j]==0)
-                        for(int i=1;i<m;++i)
-                            A[i][j]=0;
-                }
-
-                if(r1) {
-                    A.insert(A.begin(), vector<int>(n,0));
-                    A.erase(A.begin()+1);
-                }
-
-            */
+           if(first_row_zero){
+               for(int col=0;col<W;++col){
+                   matrix[0][col]=0;
+               }
+           }
                 
             for(auto &i:matrix){
                 for(auto &j:i){
